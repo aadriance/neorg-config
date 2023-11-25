@@ -1,0 +1,79 @@
+@document.meta
+tangle: [
+  ../.wezterm.lua
+]
+@end
+
+* Base configuration set-up
+
+The below pre-amble sets up wezterm by importing its lua library
+and defining the initial config dictionary to be filled out.
+
+@code lua
+local wezterm = require 'wezterm'
+local config = {}
+@end
+
+* Config Builder
+
+  Wez has a config build which helps kick start the config dictionary
+  and provide helpful error messages.
+
+@code lua
+if wezterm.config_builder then
+  config = wezterm.config_builder()
+end
+@end
+
+* Color Scheme
+
+  I love catppuccin, so I'm using that as my color scheme.
+
+@code lua
+config.color_scheme = 'catppuccin-mocha'
+@end
+
+* Fonts
+
+  - Font uses the Monaspace family
+  - Argon for normal text
+  - Neon for *Bold* text
+  - Radon for /italic/ text
+  - Krypton for half weight
+
+@code lua
+config.font = wezterm.font 'Monaspace Argon'
+config.font_rules = {
+  -- For Bold-but-not-italic text, use this relatively bold font, and override
+  -- its color to a tomato-red color to make bold text really stand out.
+  {
+    intensity = 'Bold',
+    italic = false,
+    font = wezterm.font{
+      family = 'Monaspace Neon',
+      weight = 'Bold',
+    },
+  },
+  {
+    italic = true,
+    font = wezterm.font{
+      family = 'Monaspace Radon',
+      style = 'Italic',
+    },
+  },
+{
+    intensity = 'Half',
+    italic = false,
+    font = wezterm.font{
+      family = 'Monaspace Krypton',
+      weight = 'Half',
+    },
+  },
+}
+@end
+
+* Return the config
+
+@code lua
+return config
+@end
