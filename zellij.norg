@@ -1,0 +1,13 @@
+@document.meta
+tangle: [
+  ../.config/zellij/config.kdl
+]
+@end
+
+* Color Scheme
+
+  Catpuccin mocha used her as with the rest of my programs.
+
+@code kdl
+  theme "catppuccin-mocha"
+@end
