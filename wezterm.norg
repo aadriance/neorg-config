@@ -9,31 +9,46 @@ tangle: [
 The below pre-amble sets up wezterm by importing its lua library
 and defining the initial config dictionary to be filled out.
 
-@code lua
-local wezterm = require 'wezterm'
-local config = {}
-@end
+  @code lua
+  local wezterm = require 'wezterm'
+  local config = {}
+  @end
 
 * Config Builder
 
   Wez has a config build which helps kick start the config dictionary
   and provide helpful error messages.
 
-@code lua
-if wezterm.config_builder then
-  config = wezterm.config_builder()
-end
-@end
+  @code lua
+  if wezterm.config_builder then
+    config = wezterm.config_builder()
+  end
+  @end
 
 * Color Scheme
 
   I love catppuccin, so I'm using that as my color scheme.
 
-@code lua
-config.color_scheme = 'catppuccin-mocha'
-@end
+  @code lua
+  config.color_scheme = 'catppuccin-mocha'
+  @end
 
 * Fonts
+
+  - Font uses Victor Mono
+  - Normal test looks like so
+  - *Bold looks like so*
+  - /Italis looks fancy!/
+  - Normal ligature goodness: == != ==> ~~> |>
+  - Nerd fonts provided from wezterm default fall-backs: ** 
+
+  @code lua
+    config.font = wezterm.font 'Victor Mono'
+  @end
+
+* Fonts Disabled: Monaspace
+
+  I was previously using a very fancy font set-up. I think I ultimately prefer just using vitory mono.
 
   - Font uses the Monaspace family
   - Argon for normal text
@@ -41,39 +56,47 @@ config.color_scheme = 'catppuccin-mocha'
   - Radon for /italic/ text
   - Krypton for half weight
 
-@code lua
-config.font = wezterm.font 'Monaspace Argon'
-config.font_rules = {
-  -- For Bold-but-not-italic text, use this relatively bold font, and override
-  -- its color to a tomato-red color to make bold text really stand out.
+  @code off
+  config.font = wezterm.font 'Monaspace Argon'
+  config.font_rules = {
+    -- For Bold-but-not-italic text, use this relatively bold font, and override
+    -- its color to a tomato-red color to make bold text really stand out.
+    {
+      intensity = 'Bold',
+      italic = false,
+      font = wezterm.font{
+        family = 'Monaspace Neon',
+        weight = 'Bold',
+      },
+    },
+    {
+      italic = true,
+      font = wezterm.font{
+        family = 'Monaspace Radon',
+        style = 'Italic',
+      },
+    },
   {
-    intensity = 'Bold',
-    italic = false,
-    font = wezterm.font{
-      family = 'Monaspace Neon',
-      weight = 'Bold',
+      intensity = 'Half',
+      italic = false,
+      font = wezterm.font{
+        family = 'Monaspace Krypton',
+        weight = 'Light',
+      },
     },
-  },
-  {
-    italic = true,
-    font = wezterm.font{
-      family = 'Monaspace Radon',
-      style = 'Italic',
-    },
-  },
-{
-    intensity = 'Half',
-    italic = false,
-    font = wezterm.font{
-      family = 'Monaspace Krypton',
-      weight = 'Light',
-    },
-  },
-}
-@end
+  }
+  @end
+
+* GUI Changes
+
+  - Hide tabs unless I am using them
+
+  @code lua
+    config.hide_tab_bar_if_only_one_tab = true
+  @end
 
 * Return the config
 
-@code lua
-return config
-@end
+  @code lua
+  return config
+  @end
