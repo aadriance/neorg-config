@@ -28,14 +28,14 @@ tangle: [
   antigen bundle Aloxaf/fzf-tab
   # Tell Antigen that you're done.
   antigen apply
-  @end
+@end
 
 * TUI Goodness
 
   - Init starship for nice terminal line
   - Have zellij auto launch
 
-  @code zsh
+@code zsh
 
   source <("/opt/homebrew/bin/starship" init zsh --print-full-init)
 
@@ -50,4 +50,4 @@ tangle: [
           exit
       fi
   fi
-  @end
+@end
