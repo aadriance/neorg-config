@@ -1,6 +1,6 @@
 @document.meta
 tangle: [
-  ../.config/zsh/config.zsh
+  ~/.config/zsh/config.zsh
 ]
 @end
 
@@ -50,4 +50,10 @@ tangle: [
           exit
       fi
   fi
+@end
+
+* Update environment variables
+  - Add go installs to path
+@code zsh
+  export PATH=${PATH}:`go env GOPATH`/bin
 @end
