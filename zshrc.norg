@@ -54,6 +54,9 @@ tangle: [
 
 * Update environment variables
   - Add go installs to path
+  - turn off beep
+
 @code zsh
   export PATH=${PATH}:`go env GOPATH`/bin
+  unsetopt BEEP
 @end

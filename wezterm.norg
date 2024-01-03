@@ -95,6 +95,14 @@ and defining the initial config dictionary to be filled out.
     config.hide_tab_bar_if_only_one_tab = true
   @end
 
+* Key mappings
+
+  by default wezterm will use right alt as AltGr causing mapping to not work
+
+@code lua
+config.send_composed_key_when_right_alt_is_pressed = false
+@end
+
 * Return the config
 
   @code lua
