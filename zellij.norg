@@ -6,8 +6,15 @@ tangle: [
 
 * Color Scheme
 
-  Catpuccin mocha used her as with the rest of my programs.
+  Catpuccin mocha used here as with the rest of my programs.
 
 @code kdl
   theme "catppuccin-mocha"
+@end
+* NVIM Scroll Back Editing
+
+  NVIM is life.
+
+@code kdl
+  scrollback_editor "nvim"
 @end
